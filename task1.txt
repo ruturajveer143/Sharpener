@@ -1,0 +1,7 @@
+Why do we use Git as a versioning tool?
+Ans: Git is version control system. It helps to develper to manage code and it allows to developers to track
+changes made to there code bases over time. providing detiled history of modification.
+Git enables developers to work on multiple features or bug fixes simultaneously through branching, reducing conflicts and streamlining development workflows. 
+Moreover, Git's distributed nature ensures that each developer has a complete copy of the repository, promoting flexibility and resilience. 
+Lastly, Git's extensive ecosystem of tools and services, along with its robust branching and merging capabilities,
+make it a versatile and powerful version control system for software development projects of all sizes.
