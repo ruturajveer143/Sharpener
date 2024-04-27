@@ -1,8 +1,7 @@
 // Write your code below:
-let friit = document.getElementsByClassName('fruit');
+let li= document.getElementsByTagName('li');
+li[4].style.color='blue';
 
-friit[2].style.backgroundColor='yellow';
-
-for(let i =0;i<friit.length;i++){
-  friit[i].style.fontWeight='bold';
+for(let i=0; i<li.length;i++){
+  li[i].style.fontStyle='italic';
 }
