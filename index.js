@@ -1,21 +1,52 @@
-// Task 1:
+const form = document.querySelector('form');
 
-const h3 = document.createElement('h3');
-h3.textContent = 'Buy high quality organic fruits online';
+const fruits = document.querySelector('.fruits');
 
-const mainHeading = document.getElementById('main-heading');
-mainHeading.parentNode.insertBefore(h3, mainHeading.nextSibling);
+form.addEventListener('submit', function(event){
+    event.preventDefault();
 
-// Task 2:
-h3.style.fontStyle = 'italic';
+    const inputValue = document.getElementById('fruit-to-add');
 
-// Task 3:
-const para = document.createElement('p');
-para.textContent = 'Total fruits: 4';
+    //Li-adding
+    const newLi = document.createElement('li');
 
-// Task 4: On this paragraph tag, set an id of "fruits-total".
-para.id = 'fruits-total';
-const secondDiv = document.querySelector('div:nth-child(2)');
+   // newLi.innerHTML = inputValue.value + '<button class="delete-btn">x</button>' + '<button class="edit-btn">Edit</button>';
 
-const urlist = secondDiv.querySelector('ul');
-secondDiv.insertBefore(para, urlist);
+
+     const newLitext = document.createTextNode(inputValue.value);
+ newLi.appendChild(newLitext);
+ newLi.className = 'fruit';
+
+//deltetBTN
+ const deleteBtn = document.createElement('button');
+ const deleteBtnText = document.createTextNode('x');
+ deleteBtn.appendChild(deleteBtnText);
+ deleteBtn.className = 'delete-btn';
+ newLi.appendChild(deleteBtn);
+
+
+
+
+//editBTN
+
+const editBtn = document.createElement('button');
+const editBtnText = document.createTextNode('Edit');
+ editBtn.appendChild(editBtnText);
+ editBtn.className = 'edit-btn';
+ newLi.appendChild(editBtn);
+
+
+//adding li as the last element of unorder list
+fruits.appendChild(newLi);
+
+
+});
+
+
+fruits.addEventListener('click', function(event){
+    if(event.target.classList.contains('delete-btn')){
+        const fruitToDelete = event.target.parentElement;
+        fruits.removeChild(fruitToDelete);
+    };
+    
+});
