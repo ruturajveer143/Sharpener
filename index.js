@@ -25,8 +25,6 @@ form.addEventListener('submit', function(event){
  newLi.appendChild(deleteBtn);
 
 
-
-
 //editBTN
 
 const editBtn = document.createElement('button');
@@ -36,7 +34,6 @@ const editBtnText = document.createTextNode('Edit');
  newLi.appendChild(editBtn);
 
 
-//adding li as the last element of unorder list
 fruits.appendChild(newLi);
 
 
