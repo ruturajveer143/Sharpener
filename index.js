@@ -18,9 +18,24 @@ showUserScreen(myObj);
 function showUserScreen(obj){
   let ul = document.querySelector('ul');
 let li= document.createElement('li');
+let btn = document.createElement('button');
 
 li.textContent=obj.username+'-'+obj.email+'-'+obj.phone;
 
+
 ul.appendChild(li);
+btn.textContent='Delete';
+btn.type='button';
+btn.className=obj.email;
+li.appendChild(btn);
+
+btn.addEventListener('click',(event)=>{
+  if(event.target.classList.contains(`${obj.email}`)){
+    localStorage.removeItem(`${obj.email}`);
+    const del = event.target.parentElement;
+    ul.removeChild(del);
+  }
+
+})
 }
 module.exports = handleFormSubmit;
