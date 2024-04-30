@@ -1,41 +1,56 @@
 // Write your code below:
-function handleFormSubmit(event){
+function handleFormSubmit(event) {
   event.preventDefault();
-  let username=event.target.username.value;
- let email = event.target.email.value;
- let phone= event.target.phone.value;
+
+  let myObj = {
+    username: event.target.username.value,
+    email: event.target.email.value,
+    phone: event.target.phone.value
+  };
+
+  let myObj_serial = JSON.stringify(myObj);
+
+  localStorage.setItem(myObj.email, myObj_serial);
+
+  const string = myObj.username + "-" + myObj.email + "-" + myObj.phone;
+  const newLi = document.createElement('li');
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.addEventListener('click', function () {
+   
+    localStorage.removeItem(myObj.email);
+    
+    newLi.remove();
+  });
+
+
+  const editBtn = document.createElement('button');
+  editBtn.textContent = 'Edit';
+  editBtn.addEventListener('click', function () {
+    
+    localStorage.removeItem(myObj.email);
+  
+    newLi.remove();
+  
+    document.getElementById('username').value = myObj.username;
+    document.getElementById('email').value = myObj.email;
+    document.getElementById('phone').value = myObj.phone;
+  });
+
+  const newLiText = document.createTextNode(string);
+  newLi.appendChild(newLiText);
+  newLi.appendChild(deleteBtn);
+  newLi.appendChild(editBtn);
+
+  
+  const list = document.querySelector("ul");
+  list.appendChild(newLi);
+
  
-var myObj={
- 'username':username,
- 'email':email,
- 'phone':phone
+  document.getElementById('username').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('phone').value = '';
 }
-localStorage.setItem(email,JSON.stringify(myObj));
 
-showUserScreen(myObj);
- 
-}
-function showUserScreen(obj){
-  let ul = document.querySelector('ul');
-let li= document.createElement('li');
-let btn = document.createElement('button');
-
-li.textContent=obj.username+'-'+obj.email+'-'+obj.phone;
-
-
-ul.appendChild(li);
-btn.textContent='Delete';
-btn.type='button';
-btn.className=obj.email;
-li.appendChild(btn);
-
-btn.addEventListener('click',(event)=>{
-  if(event.target.classList.contains(`${obj.email}`)){
-    localStorage.removeItem(`${obj.email}`);
-    const del = event.target.parentElement;
-    ul.removeChild(del);
-  }
-
-})
-}
 module.exports = handleFormSubmit;
