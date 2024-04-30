@@ -1,13 +1,26 @@
 // Write your code below:
-
 function handleFormSubmit(event){
   event.preventDefault();
-var userDetails = {
-    "username": event.target.username.value,
-    "email": event.target.email.value,
-    "phone": event.target.phone.value,
-  };
-localStorage.setItem("User Details", JSON.stringify(userDetails));
+  let username=event.target.username.value;
+ let email = event.target.email.value;
+ let phone= event.target.phone.value;
+ 
+var myObj={
+ 'username':username,
+ 'email':email,
+ 'phone':phone
+}
+localStorage.setItem(email,JSON.stringify(myObj));
 
+showUserScreen(myObj);
+ 
+}
+function showUserScreen(obj){
+  let ul = document.querySelector('ul');
+let li= document.createElement('li');
+
+li.textContent=obj.username+'-'+obj.email+'-'+obj.phone;
+
+ul.appendChild(li);
 }
 module.exports = handleFormSubmit;
